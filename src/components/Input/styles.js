@@ -14,6 +14,8 @@ export const Container = styled.div`
 
     height: 48px;
 
+    border: ${(props) => (props.border ? `1px solid ${props.theme.COLORS.LIGHT_100}` : 'none')};
+
     
     
     > input {
@@ -26,8 +28,7 @@ export const Container = styled.div`
         background: transparent;
         border: 0;
 
-        align-content: center;
-        text-align: center;
+
 
         &:placeholder {
             color: ${({theme}) => theme.COLORS.LIGHT_500};
@@ -36,5 +37,9 @@ export const Container = styled.div`
         > svg {
             margin-left: 16px;
         }
+
+
     }
+
+    
 `;

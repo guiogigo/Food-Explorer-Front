@@ -1,11 +1,13 @@
 import { Container } from "./styles";
 
-import receiptIcon from "../../assets/receipt-icon.svg"
 
-export function Button({ text }) {
+export function Button({ icon: Icon, text }) {
     return (
         <Container type="button">
-            <img src={receiptIcon} alt="" />
+            {
+                Icon &&
+                <img src={Icon} alt="" />
+            }
             <span>{text}</span>
         </Container>
     )

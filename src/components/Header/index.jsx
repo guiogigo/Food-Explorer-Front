@@ -6,6 +6,8 @@ import { Input } from "../Input/index.jsx";
 
 import rocketIcon from '../../assets/rocket-icon.svg';
 import logoutIcon from '../../assets/logout-icon.svg';
+import receiptIcon from "../../assets/receipt-icon.svg"
+
 
 export function Header() {
     return(
@@ -20,7 +22,7 @@ export function Header() {
 
             <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
 
-            <Button text={"Pedidos"}/>
+            <Button icon={receiptIcon} text={"Pedidos"}/>
 
              <img src={logoutIcon} alt="" />
         </Container>
