@@ -14,6 +14,7 @@ export const Container = styled.header`
     gap: 2rem;
 
     padding: 1.5rem 7.68rem;
+    
 
     > img {
         width: 1.5rem;
