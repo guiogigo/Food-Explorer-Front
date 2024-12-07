@@ -5,7 +5,7 @@ export const Container = styled.div`
     height: 100vh;
 
     display: grid;
-    grid-template-rows: 6.5rem auto 0;
+    grid-template-rows: 6.5rem auto 4.8rem;
     grid-template-areas:
     "header"
     "content"
@@ -69,4 +69,12 @@ export const Banner = styled.div`
             line-height: 100%; /* 16px */
         }
     }
+`;
+
+export const Content = styled.div`
+    grid-area: content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 `;
