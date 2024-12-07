@@ -3,7 +3,7 @@ import { Footer } from '../../components/Footer';
 import { Item } from '../../components/Item';
 import { Container, Banner, Content } from './styles';
 import frutasBanner from '../../assets/Frutas.png'
-import imgTeste from '../../assets/foodImages/name=macaron, size=200.png'
+import imgTeste from '../../assets/foodImages/name=gambe, size=200.png'
 
 export function Home() {
     return(

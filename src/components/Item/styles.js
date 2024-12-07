@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { FiHeart } from "react-icons/fi";
+import { TextButton } from "../TextButton";
+
+export const Heart = styled(TextButton)``;
 
 export const Container = styled.div`
     padding: 1.5rem;
@@ -14,8 +16,11 @@ export const Container = styled.div`
     align-items: center;
 
     gap: 15px;
+    
+    text-align: center;
+    font-style: normal;
 
-    > svg {
+    > ${Heart} {
         position: absolute;
         top: 1rem;
         right: 1rem;
@@ -23,10 +28,6 @@ export const Container = styled.div`
         width: 1.5rem;
         height: 1.5rem;
     }
-    
-    text-align: center;
-    font-style: normal;
-
     
     > img {
         width: 11rem;
@@ -68,3 +69,6 @@ export const Container = styled.div`
         line-height: 160%; 
     }
 `;
+
+
+    
