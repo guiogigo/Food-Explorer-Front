@@ -7,17 +7,17 @@ export const Container = styled.button`
     border: none;
     border-radius: 5px;
 
-    padding: 0.75rem 2rem;
+    padding: 1.2rem 3.2rem;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
 
     text-align: center;
     color: ${({theme}) => theme.COLORS.LIGHT_100};
     /* Poppins/100-medium */
     font-family: Poppins;
-    font-size: 0.87rem;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 1.5rem; /* 171.429% */
+    line-height: 2.4rem; /* 171.429% */
 `;

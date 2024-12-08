@@ -34,18 +34,16 @@ export function Home() {
             <Header/>
 
             <Content>
+                
                 <Banner>
-                    
-                    <div>
-                        <img src={frutasBanner} alt="" />
-                        <h2>Sabores inigualáveis</h2>
-                        <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                    <div className='banner-wrapper'>
+                        <div className='banner-content'>
+                            <div className='banner-img'><img src={frutasBanner} alt="" /></div>
+                            <h2>Sabores inigualáveis</h2>
+                            <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                        </div>
                     </div>
                 </Banner>
-
-                <SwiperComponent data={dados}/>
-
-                
 
                 <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>
                 
@@ -55,3 +53,11 @@ export function Home() {
         </Container>
     );
 }
+
+/*<SwiperComponent data={dados}/> */
+
+/*
+
+    
+
+*/

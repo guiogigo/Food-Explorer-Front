@@ -1,5 +1,5 @@
-import { Container, Profile } from "./styles";
-import { FiSearch } from 'react-icons/fi'
+import { Container, Profile, Menu } from "./styles";
+import { FiSearch, FiList } from 'react-icons/fi'
 
 import { Button } from '../Button/index.jsx'
 import { Input } from "../Input/index.jsx";
@@ -12,6 +12,9 @@ import receiptIcon from "../../assets/receipt-icon.svg"
 export function Header() {
     return(
         <Container>
+            <Menu>
+                <FiList/>
+            </Menu>
             <Profile>
                 <img src={rocketIcon} alt="" />
                 <div>
@@ -19,12 +22,18 @@ export function Header() {
                     <span>admin</span>
                 </div>
             </Profile>
+            <div className="desktop">
+                <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
 
-            <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
+                <Button icon={receiptIcon} text={"Pedidos"}/>
 
-            <Button icon={receiptIcon} text={"Pedidos"}/>
+                <img src={logoutIcon} alt="" />
+            </div>
+            <div className="mobile">
+                <img src={receiptIcon} alt=""/>
+            </div>
 
-             <img src={logoutIcon} alt="" />
+
         </Container>
     )
 };

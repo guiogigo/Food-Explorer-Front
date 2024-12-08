@@ -22,8 +22,8 @@ export const Container = styled.div`
             justify-content: center;
 
             > svg {
-                width: 1.5rem;
-                height: 1.5rem;
+                width: 2.4rem;
+                height: 2.4rem;
             }
         }
 
@@ -31,7 +31,7 @@ export const Container = styled.div`
             color: ${({theme}) => theme.COLORS.LIGHT_300};
 
             font-family: Roboto;
-            font-size: 20px;
+            font-size: 2rem;
             font-style: normal;
             font-weight: 700;
             line-height: 160%;

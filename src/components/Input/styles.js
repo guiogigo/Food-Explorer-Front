@@ -9,21 +9,21 @@ export const Container = styled.div`
     background-color: ${({theme}) => theme.COLORS.DARK_900};
     color: ${({theme}) => theme.COLORS.LIGHT_500};
 
-    padding: 12px 14px;
+    padding: 1.2rem 1.4rem;
     border-radius: 5px;
-    gap: 14px;
+    gap: 1.4rem;
 
-    height: 48px;
+    height: 4.8rem;
 
-    border: ${(props) => (props.border ? `1px solid ${props.theme.COLORS.LIGHT_100}` : 'none')};
+    border: ${(props) => (props.border == "true" ? `1px solid ${props.theme.COLORS.LIGHT_100}` : 'none')};
 
     
     
     > input {
         width: 100%;
-        padding: 12px;
+        padding: 1.2rem;
         
-        font-size: 1rem;
+        font-size: 1.6rem;
 
         color: ${({theme}) => theme.COLORS.LIGHT_100};
         background: transparent;

@@ -7,8 +7,8 @@ export const Container = styled.button`
     text-align: center;
     /* Poppins/100-medium */
     font-family: Poppins;
-    font-size: 0.87rem;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 1.5rem; /* 171.429% */
+    line-height: 2.4rem; /* 171.429% */
 `;

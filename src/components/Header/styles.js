@@ -1,9 +1,10 @@
 import { styled } from 'styled-components';
+import { SCREEN } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.header`
     grid-area: header;
 
-    height: 6.5rem;
+    height: 10.4rem;
     width: 100%;
 
     background-color: ${({theme}) => theme.COLORS.DARK_600};
@@ -11,14 +12,35 @@ export const Container = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 3.2rem;
 
-    padding: 1.5rem 7.68rem;
+    padding: 2.4rem 12.2rem;
     
-
+    .desktop {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2.4rem;
+    }
     > img {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    @media (max-width: ${SCREEN.MD}) {
+        .desktop {
+            display: none;
+        }
+        .mobile {
+            display: block;
+        }
+
+        padding: 7.2rem 3.6rem 3.6rem;
     }
 `;
 
@@ -29,7 +51,7 @@ export const Profile = styled.div`
 
     h1 {
         font-family: Roboto;
-        font-size: 1.5rem;
+        font-size: 2.4rem;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -39,7 +61,7 @@ export const Profile = styled.div`
         color: ${({theme}) => theme.COLORS.CAKE_200};
 
         font-family: Roboto;
-        font-size: 0.75rem;
+        font-size: 1.2rem;
         font-style: normal;
         font-weight: 400;
         line-height: 160%; /* 19.2px */
@@ -57,5 +79,21 @@ export const Profile = styled.div`
         flex-direction: column;
         align-items: end;
         white-space: nowrap;
+    }
+`;
+
+export const Menu = styled.button`
+    background: none;
+    border: none;
+    display: none;
+    
+    > svg {
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
+        width: 3.2rem;
+        height: 3.2rem;
+    }
+
+    @media (max-width: ${SCREEN.MD}) {
+        display: block;
     }
 `;
