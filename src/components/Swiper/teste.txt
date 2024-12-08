@@ -1,0 +1,54 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import { Container  } from './styles';
+import { Item } from '../Item';
+import imgTeste from '../../assets/foodImages/name=gambe, size=200.png'
+
+
+export function SwiperComponent({data}) {
+    return(
+        <Container>
+            <Swiper
+                
+                spaceBetween={27}
+                slidesPerView="auto"
+                navigation={true}
+                modules={[Navigation]}
+
+            >
+                {
+                    data.map((item) => {
+                        return(<SwiperSlide key={item.id}>{item.item}</SwiperSlide>)
+                    })
+                }
+               
+            </Swiper>
+        </Container>
+    )
+}
+
+/*
+{
+                    data.map((item) => {
+                        return(<SwiperSlide key={item.id}>{item.item}</SwiperSlide>)
+                    })
+                }
+*/
+
+/*
+                
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                <SwiperSlide>TEXTOST TESTESTE TESTE</SwiperSlide>
+                */
