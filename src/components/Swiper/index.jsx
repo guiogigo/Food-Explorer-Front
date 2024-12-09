@@ -1,15 +1,20 @@
 
-import React, {Children} from "react"
+import React, {Children, useState} from "react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
 import { Container } from "./styles";
+
+import {FiArrowRight, FiArrowLeft} from 'react-icons/fi'
 
 export function SwiperComponent ({title, children}) {
   
   const hasNoChilds = Children.count(children) === 0;
 
   if (hasNoChilds) return null;
+
+  const [ currentSlide, setCurrentSlide ] = useState(0);
+  const [ loaded, setLoaded ] = useState(false);
 
   const sliderConfig = {
     initial: 0,
@@ -58,7 +63,7 @@ export function SwiperComponent ({title, children}) {
       },
     }
   };
-  const [sliderRef] = useKeenSlider((sliderConfig));
+  const [ sliderRef, instanceRef ] = useKeenSlider(sliderConfig);
 
   return (
     <Container className="slider-wrapper">
@@ -71,32 +76,49 @@ export function SwiperComponent ({title, children}) {
         ))}
       </div>
 
+      {loaded && instanceRef.current && (
+        <>
+          <Arrow
+            left
+            onClick={(e) => 
+              e.stopPropagation() || instanceRef.current?.prev()
+            }
+          />
+          <Arrow
+            right
+            onClick={(e) => 
+              e.stopPropagation() || instanceRef.current?.next()
+            }
+          />
+        </>
+      )}
+
     </Container>
   )
 }
-/*{
-            data.map((item) => {
-                return(<div className="keen-slider__slide" key={item.id}>{item.item}</div>)
-            })
-        } 
-            
-        <div className="keen-slider__slide">Item 1</div>
-        <div className="keen-slider__slide">Item 2</div>
-        <div className="keen-slider__slide">Item 3</div>
-        <div className="keen-slider__slide">Item 4</div>
-        <div className="keen-slider__slide">Item 5</div>
-        <div className="keen-slider__slide">Item 6</div>
-        <div className="keen-slider__slide">Item 7</div>
-        <div className="keen-slider__slide">Item 8</div>
-        <div className="keen-slider__slide">Item 9</div>
 
-
-
-        <Container ref={sliderRef} className="keen-slider">
-        {
-            data.map((item) => {
-                return(<div className="keen-slider__slide" key={item.id}>{item.item}</div>)
-            })
-        } 
-    </Container>
-        */
+function Arrow(props){
+  return(
+    <>
+      {props.left && <div className="arrow-bg arrow--left"></div>}
+      {!props.right && <div className="arrow-bg arrow--right"></div>}
+      <svg
+        onClick={props.onClick}
+        className={`arrow ${props.left ? "arrow--left" : "arrow--right"}`}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 40 40"
+      >
+        {props.left && (
+          <path
+            d="M25.8839 6.61612C26.372 7.10427 26.372 7.89573 25.8839 8.38388L14.2678 20L25.8839 31.6161C26.372 32.1043 26.372 32.8957 25.8839 33.3839C25.3957 33.872 24.6043 33.872 24.1161 33.3839L11.6161 20.8839C11.128 20.3957 11.128 19.6043 11.6161 19.1161L24.1161 6.61612C24.6043 6.12796 25.3957 6.12796 25.8839 6.61612Z"
+          />
+        )}
+        {!props.left && (
+          <path
+            d="M14.1166 6.61612C14.6048 6.12796 15.3962 6.12796 15.8844 6.61612L28.3844 19.1161C28.8725 19.6043 28.8725 20.3957 28.3844 20.8839L15.8844 33.3839C15.3962 33.872 14.6048 33.872 14.1166 33.3839C13.6284 32.8957 13.6284 32.1043 14.1166 31.6161L25.7327 20L14.1166 8.38388C13.6284 7.89573 13.6284 7.10427 14.1166 6.61612Z"
+          />
+        )}
+      </svg>
+    </>
+  )
+}

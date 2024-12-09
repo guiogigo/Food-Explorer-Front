@@ -1,7 +1,6 @@
 import { Container, Profile } from "./styles";
 import { FiSearch, FiMenu, FiX } from 'react-icons/fi'
 
-import { Button } from '../Button/index.jsx'
 import { Input } from "../Input/index.jsx";
 
 import rocketIcon from '../../assets/rocket-icon.svg';
