@@ -6,6 +6,7 @@ import { RiArrowDropRightLine } from 'react-icons/ri'
 
 
 export function Item({img ,title, desc, price}) {
+
     return(
         <Container >
             <Heart icon={FiHeart}/>

@@ -1,46 +1,216 @@
 import { styled } from 'styled-components';
-import { SCREEN } from '../../styles/deviceBreakpoints';
+import { DEVICE_BREAKPOINTS, SCREEN } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.header`
     grid-area: header;
 
-    height: 10.4rem;
+    min-height: 11.4rem;
     width: 100%;
+    padding-inline: 2.8rem;
 
     background-color: ${({theme}) => theme.COLORS.DARK_600};
 
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    gap: 3.2rem;
+    justify-content: space-between;
+    gap: 1.6rem;
 
-    padding: 2.4rem 12.2rem;
     
-    .desktop {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 2.4rem;
-    }
-    > img {
-        width: 2.4rem;
-        height: 2.4rem;
+    .desktop-only {
+        display: none;
+
+        ${DEVICE_BREAKPOINTS.LG} {
+            display: initial;
+        }
     }
 
-    .mobile {
+    button.no-bg {
+        border: 0;
+        border-radius: 2px;
+        background: none;
+        padding: .8rem .8rem .8rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
+        font-family: 'Roboto';
+        font-size: 2.1rem;
+        gap: 1.6rem;
+
+        img {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
+        }
+    }
+
+    nav {
+        z-index: 999;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 5.6rem 2.8rem;
+
+        background: ${({ theme }) => theme.COLORS.DARK_400};
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        opacity: 0;
+        transform: translateY(-100%);
+        
+
+        transition: all 300ms;
+
+        .input {
+        margin-top: 6.5rem;
+        margin-bottom: 3.6rem;
+        width: 100%;
+        }
+    }
+
+    nav.mobile-menu {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .mobile-button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        border: none;
+        border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+        height: 5.4rem;
+        
+        background: none;
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        font-family: 'Roboto';
+        font-size: 2.1rem;
+        gap: 1.6rem;
+    }
+
+    #exit {
         display: none;
     }
 
-    @media (max-width: ${SCREEN.MD}) {
-        .desktop {
+    ${DEVICE_BREAKPOINTS.LG} {
+        padding-inline: clamp(10px, 9vw, 12.3rem);
+        padding-top: 0;
+        gap: 3.2rem;
+
+        button.menu {
             display: none;
         }
-        .mobile {
-            display: block;
+
+        nav {
+            background: initial;
+            position: initial;
+            top: initial;
+            left: initial;
+            width: initial;
+            height: initial;
+            padding: initial;
+            opacity: initial;
+            transform: initial;
+
+            flex-direction: row;
+            align-items: center;
+
+            .mobile-button {
+                display: none;
+            }
         }
 
-        padding: 7.2rem 3.6rem 3.6rem;
+        #exit {
+            display: initial;
+        }  
+
+        .navBar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 3.2rem;
+        }
+    }
+
+    #btn-order {
+        position: relative;
+        border: none;
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .8rem;
+
+        .btn-order-txt {
+            display: none;
+        }
+        .btn-order-qtd {
+            color: ${({ theme }) => theme.COLORS.LIGHT_100};
+            background-color:  ${({ theme }) => theme.COLORS.TOMATO_100};
+            padding: 8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.4rem;
+            line-height: 24px;
+
+            position: absolute;
+            top: -15%;
+            right: -15%;
+            overflow: hidden;
+        }
+
+        ${DEVICE_BREAKPOINTS.LG} {
+            border-radius: 8px;
+            padding: 12px 46px;
+            background-color:  ${({ theme }) => theme.COLORS.TOMATO_100};
+
+            .btn-order-qtd,
+            .btn-order-txt {
+                display: inline;
+                color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 24px;
+            }
+
+            .btn-order-qtd {
+                position: unset;
+                top: unset;
+                right: unset;
+                padding: unset;
+                width: unset;
+                height: unset;
+                border-radius: unset;
+                justify-content: unset;
+                align-items: unset;
+                overflow: unset;
+            }
+
+            .btn-order-qtd::before {
+                content: '(';
+            }
+            .btn-order-qtd::after {
+                content: ')';
+            }
+        }
     }
 `;
 
@@ -48,10 +218,11 @@ export const Profile = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 
 
     h1 {
         font-family: Roboto;
-        font-size: 2.4rem;
+        font-size: 2.1rem;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -70,8 +241,8 @@ export const Profile = styled.div`
     }
 
     > img {
-        width: 30px;
-        height: 30px;
+        width: 2.4rem;
+        height: 2.4rem;
     }
 
     > div {

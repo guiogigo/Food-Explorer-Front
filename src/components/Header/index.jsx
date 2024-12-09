@@ -1,5 +1,5 @@
-import { Container, Profile, Menu } from "./styles";
-import { FiSearch, FiList } from 'react-icons/fi'
+import { Container, Profile } from "./styles";
+import { FiSearch, FiList, FiX } from 'react-icons/fi'
 
 import { Button } from '../Button/index.jsx'
 import { Input } from "../Input/index.jsx";
@@ -7,14 +7,23 @@ import { Input } from "../Input/index.jsx";
 import rocketIcon from '../../assets/rocket-icon.svg';
 import logoutIcon from '../../assets/logout-icon.svg';
 import receiptIcon from "../../assets/receipt-icon.svg"
+import { useRef } from "react";
 
 
 export function Header() {
+    const navRef = useRef()
+
+    function toggleNavbar(e) {
+        console.log('toggleNavbar', e.target);
+        navRef.current.classList.toggle('mobile-menu');
+    }
+
     return(
         <Container>
-            <Menu>
-                <FiList/>
-            </Menu>
+            <button className="menu no-bg" onClick={toggleNavbar}>
+                <FiList id="menu-img" size={24}/>
+            </button>
+
             <Profile>
                 <img src={rocketIcon} alt="" />
                 <div>
@@ -22,16 +31,33 @@ export function Header() {
                     <span>admin</span>
                 </div>
             </Profile>
-            <div className="desktop">
-                <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
 
-                <Button icon={receiptIcon} text={"Pedidos"}/>
+            <div className="navBar">
+                <nav ref={navRef}>
+                    <button className="menu no-bg" onClick={toggleNavbar}>
+                        <FiX size={24}/>
+                        Menu
+                    </button>
 
-                <img src={logoutIcon} alt="" />
+                    <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
+
+                    <button className="mobile-button">
+                        <span>Sair</span>
+                    </button>
+                </nav>
+
+                <button id="btn-order" type="button">
+                    <img src={receiptIcon} alt="" />
+                    <span className="btn-order-txt">Pedidos</span>
+                    <span className="btn-order-qtd">0</span>
+                </button>
+
+                <button id="exit" className="no-bg">
+                    <img src={logoutIcon} alt="Sair da aplicação" />
+                </button>
+                
             </div>
-            <div className="mobile">
-                <img src={receiptIcon} alt=""/>
-            </div>
+            
 
 
         </Container>
