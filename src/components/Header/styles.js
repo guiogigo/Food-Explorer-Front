@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { DEVICE_BREAKPOINTS, SCREEN } from '../../styles/deviceBreakpoints';
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.header`
     grid-area: header;
@@ -47,6 +47,8 @@ export const Container = styled.header`
         }
     }
 
+    
+
     nav {
         z-index: 999;
         position: fixed;
@@ -54,9 +56,8 @@ export const Container = styled.header`
         left: 0;
         width: 100%;
         height: 100%;
-        padding: 5.6rem 2.8rem;
 
-        background: ${({ theme }) => theme.COLORS.DARK_400};
+        /*background: ${({ theme }) => theme.COLORS.DARK_400};*/
 
         display: flex;
         flex-direction: column;
@@ -67,6 +68,26 @@ export const Container = styled.header`
         
 
         transition: all 300ms;
+
+        .bg {
+            width: 100%;
+            height: 11.4rem;
+            padding: 6rem 0 2.8rem 2.8rem;
+            background: ${({ theme }) => theme.COLORS.DARK_700};
+        }
+
+        .menu-content {
+            height: 100%;
+            width: 100%;
+            padding: 3.6rem 2.8rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+            gap: 3.6rem;
+            background: ${({ theme }) => theme.COLORS.DARK_400};
+
+        }
 
         .input {
         margin-top: 6.5rem;
@@ -121,22 +142,40 @@ export const Container = styled.header`
 
             flex-direction: row;
             align-items: center;
+            justify-content: center;
 
+            width: 100%;
+            max-height: 10.4rem;
+
+            
+            .bg,
             .mobile-button {
                 display: none;
+            }
+
+            .menu-content {
+                width: 100%;
+                background-color: none;
+                padding: 0;
             }
         }
 
         #exit {
-            display: initial;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }  
 
         .navBar {
+            width: 100%;
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
             align-items: center;
             gap: 3.2rem;
+            
         }
+        
     }
 
     #btn-order {
@@ -217,8 +256,7 @@ export const Container = styled.header`
 export const Profile = styled.div`
     display: flex;
     align-items: center;
-    gap: 10px;
-    max-width: 
+    gap: 8px;
 
     h1 {
         font-family: Roboto;
@@ -251,20 +289,16 @@ export const Profile = styled.div`
         align-items: end;
         white-space: nowrap;
     }
-`;
 
-export const Menu = styled.button`
-    background: none;
-    border: none;
-    display: none;
-    
-    > svg {
-        color: ${({theme}) => theme.COLORS.LIGHT_100};
-        width: 3.2rem;
-        height: 3.2rem;
-    }
-
-    @media (max-width: ${SCREEN.MD}) {
-        display: block;
+    ${DEVICE_BREAKPOINTS.LG} {
+        gap: 10px;
+        h1 {
+            font-size: 2.4rem;
+        }
+        > img {
+            width: 3rem;
+            height: 3rem;
+        }
     }
 `;
+

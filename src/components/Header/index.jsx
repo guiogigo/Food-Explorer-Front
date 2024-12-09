@@ -1,5 +1,5 @@
 import { Container, Profile } from "./styles";
-import { FiSearch, FiList, FiX } from 'react-icons/fi'
+import { FiSearch, FiMenu, FiX } from 'react-icons/fi'
 
 import { Button } from '../Button/index.jsx'
 import { Input } from "../Input/index.jsx";
@@ -21,7 +21,7 @@ export function Header() {
     return(
         <Container>
             <button className="menu no-bg" onClick={toggleNavbar}>
-                <FiList id="menu-img" size={24}/>
+                <FiMenu id="menu-img" size={32}/>
             </button>
 
             <Profile>
@@ -34,16 +34,22 @@ export function Header() {
 
             <div className="navBar">
                 <nav ref={navRef}>
-                    <button className="menu no-bg" onClick={toggleNavbar}>
-                        <FiX size={24}/>
-                        Menu
-                    </button>
+                    <div className="bg">
+                        <button className="menu no-bg" onClick={toggleNavbar}>
+                            <FiX size={24}/>
+                            Menu
+                        </button>
+                    </div>
+                    <div className="menu-content">
+                        <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
+                        
 
-                    <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
+                        <button className="mobile-button">
+                            <span>Sair</span>
+                        </button>
+                    </div>
 
-                    <button className="mobile-button">
-                        <span>Sair</span>
-                    </button>
+                    
                 </nav>
 
                 <button id="btn-order" type="button">

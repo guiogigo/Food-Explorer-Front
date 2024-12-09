@@ -29,10 +29,6 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     gap: 3rem;
-
-
-    ${DEVICE_BREAKPOINTS.LG} {
-    }
 `;
 
 
@@ -89,7 +85,11 @@ export const Banner = styled.div`
                 object-position: top;
                 transform: scaleX(-1);
                 bottom: 0;
-                left: -5%;
+                left: -10%;
+
+                ${DEVICE_BREAKPOINTS.SM}{
+                    left: -4%;
+                }
                 
                 animation-name: leftSlide;
                 animation-duration: 1s;
