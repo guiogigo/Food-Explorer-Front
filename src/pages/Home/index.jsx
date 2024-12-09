@@ -8,24 +8,12 @@ import { SwiperComponent } from '../../components/Swiper';
 
 
 const dados = [
-    {id: "1", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "2", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "3", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "4", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "5", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "6", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "1", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "2", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "3", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "4", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "5", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "6", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "1", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "2", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "3", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "4", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "5", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
-    {id: "6", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>},
+    {id: "1", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,17"/>},
+    {id: "2", item: <Item img={imgTeste} title="Carne" desc="Massa fresca com camarões e pesto. " price="79,27"/>},
+    {id: "3", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,37"/>},
+    {id: "4", item: <Item img={imgTeste} title="Carne" desc="Massa fresca com camarões e pesto. " price="79,37"/>},
+    {id: "5", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,57"/>},
+    {id: "6", item: <Item img={imgTeste} title="Carne" desc="Massa fresca com camarões e pesto. " price="79,67"/>},
 ]
 
 export function Home() {
@@ -44,6 +32,12 @@ export function Home() {
                         </div>
                     </div>
                 </Banner>
+
+                <SwiperComponent title="Teste">
+                    {dados.map((dish, id) => (
+                        <Item img={imgTeste} title="comida" key={`dish:${dish.id}`} desc="Massa fresca com camarões e pesto. " price="79,97"/>
+                    ))}
+                </SwiperComponent>
 
                 <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>
                 

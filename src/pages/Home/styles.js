@@ -4,7 +4,8 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints'
 
 export const Container = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
 
     display: grid;
     grid-template-rows: 11.4rem auto 7.7rem;
@@ -19,8 +20,11 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-    grid-area: content;
+    min-height: 100%;
     max-width: 100%;
+
+    grid-area: content;
+    overflow-x: hidden;
 
     display: flex;
     flex-direction: column;
