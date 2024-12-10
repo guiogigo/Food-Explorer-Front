@@ -23,7 +23,7 @@ export function Header() {
                 <FiMenu id="menu-img" size={32}/>
             </button>
 
-            <Profile>
+            <Profile to="/">
                 <img src={rocketIcon} alt="" />
                 <div>
                     <h1>food explorer</h1>

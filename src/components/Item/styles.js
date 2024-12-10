@@ -4,7 +4,7 @@ import { TextButton } from "../TextButton";
 export const Heart = styled(TextButton)``;
 
 export const Container = styled.div`
-    padding: 2.4reem;
+    padding: 2.4rem;
 
     width: 30.4rem;
     height: 46rem;
@@ -20,6 +20,13 @@ export const Container = styled.div`
     text-align: center;
     font-style: normal;
 
+    transition: transform 300ms, filter 200ms;
+
+    &:hover {
+        transform: translateY(3px);
+        filter: brightness(1.1);
+    }
+
     > ${Heart} {
         position: absolute;
         top: 1.6rem;
@@ -29,24 +36,34 @@ export const Container = styled.div`
         height: 2.4rem;
     }
     
-    > img {
-        width: 17.6rem;
-        height: 17.6rem;
-    }
-
-    > h3 {
-        color: ${({theme}) => theme.COLORS.LIGHT_300};
-        text-align: center;
-        font-family: Poppins;
-        font-size: 2.4rem;
-        font-weight: 700;
-        line-height: 140%; /* 33.6px */
-
+    a {
+        text-decoration: none;
         display: flex;
-        align-items: center;        
-        > svg {
-            width: 2.4rem;
-            height: 2.4rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        > img {
+            width: 17.6rem;
+            height: 17.6rem;
+        }
+    
+        > h3 {
+            color: ${({theme}) => theme.COLORS.LIGHT_300};
+            text-align: center;
+            font-family: Poppins;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 140%; /* 33.6px */
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            display: flex;
+            align-items: center;        
+            > svg {
+                width: 2.4rem;
+                height: 2.4rem;
+            }
         }
     }
 

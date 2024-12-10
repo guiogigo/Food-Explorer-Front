@@ -109,6 +109,7 @@ export const Content = styled.section`
     ${DEVICE_BREAKPOINTS.LG} {
         padding: 0;
         margin: 2.4rem 12.2rem;
+        gap: 4.2rem;
 
         .dish-wrapper {
             flex-direction: row;

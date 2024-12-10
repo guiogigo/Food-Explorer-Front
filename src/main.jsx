@@ -7,16 +7,13 @@ import { register } from 'swiper/element'
 register();
 
 import theme from './styles/theme.js';
-//import { Home } from './pages/Home/index.jsx';
-import { Dish } from './pages/Dish/index.jsx'
-//import { SignUp } from './pages/SignUp/index.jsx';
-//import { SignIn } from './pages/SignIn/index.jsx'
+import { Routes } from './routes'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <Dish/>
+        <Routes/>
     </ThemeProvider>
   </StrictMode>,
 )

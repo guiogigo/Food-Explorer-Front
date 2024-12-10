@@ -6,8 +6,8 @@ import { ItemCounter } from '../../components/ItemCounter'
 import { Tag } from "../../components/Tag";
 import CaretLeft from '../../assets/CaretLeft.svg';
 
-import receiptIcon from "../../assets/receipt-icon.svg"
 import dishImage from '../../assets/foodImages/name=molla, size=400.png'
+import { Link } from "react-router-dom";
 
 export function Dish({dish}) {
     return(
@@ -15,9 +15,9 @@ export function Dish({dish}) {
             <Header/>
 
             <Content>   
-                <a href="#">
+                <Link to="/">
                     <img src={CaretLeft} alt="voltar" /> Voltar
-                </a>
+                </Link>
 
                 <div className="dish-wrapper">
                     <div className="dish-preview">

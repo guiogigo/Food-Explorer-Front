@@ -35,9 +35,19 @@ export function Home() {
 
 
                 <SwiperComponent title="Teste">
-                    {dados.map((dish, id) => (
-                        <Item img={imgTeste} title="comida" key={`dish:${dish.id}`} desc="Massa fresca com camarões e pesto. " price="79,97"/>
+                    {dados.map((dish) => (
+                        <Item item={{
+                            id: 2,
+                            url: `/dish/${self.id}`,
+                            img: imgTeste,
+                            title: "comida",
+                            desc: "Massa fresca com camarões e pesto.",
+                            price:  '79,97',
+                        }} url={'/dish/1'} key={`dish:${dish.id}`}/>
                     ))}
+
+                    
+
                 </SwiperComponent>
                                 
             </Content>
@@ -50,7 +60,7 @@ export function Home() {
 /*<SwiperComponent data={dados}/> */
 
 /*
-
+<Item img={imgTeste} title="comida" key={`dish:${dish.id}`} desc="Massa fresca com camarões e pesto. " price="79,97"/>
     
 
 */

@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.header`
     grid-area: header;
@@ -253,7 +254,7 @@ export const Container = styled.header`
     }
 `;
 
-export const Profile = styled.div`
+export const Profile = styled(Link)`
     display: flex;
     align-items: center;
     gap: 8px;
@@ -264,6 +265,7 @@ export const Profile = styled.div`
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
     }
 
     span {

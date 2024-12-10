@@ -1,6 +1,7 @@
 import { Container, Profile, Form } from "./styles";
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button'
+import { Link ,Navigate } from "react-router-dom";
 
 import rocketIcon from "../../assets/rocket-icon.svg"
 import { TextButton } from "../../components/TextButton";
@@ -14,8 +15,7 @@ export function SignIn() {
             </Profile>
 
             <Form>
-                <h1>Faça Login</h1>
-
+                <h1 className="desktop">Faça Login</h1>
                 <div>
                     <span>Email</span>
                     <Input 
@@ -24,7 +24,6 @@ export function SignIn() {
                         border="true"
                     />
                 </div>
-
                 <div>
                     <span>Senha</span>
                     <Input 
@@ -33,12 +32,10 @@ export function SignIn() {
                         border="true"
                     />
                 </div>
-
-                
-
-                <Button text="Entrar"/>
-
-                <TextButton text="Criar uma conta"/>
+                    <Button text="Entrar"/>
+                    <Link to="/signup">
+                        Criar uma conta
+                    </Link>
             </Form>
             
         </Container>
