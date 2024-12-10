@@ -15,7 +15,7 @@ export function Item({img ,title, desc, price}) {
             <p>{desc.toString()}</p>
             <span>R$ {price.toString()}</span>
 
-            <ItemCounter/>
+            <ItemCounter text="Incluir"/>
         </Container>
     )
 }

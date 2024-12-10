@@ -39,10 +39,7 @@ export function Home() {
                         <Item img={imgTeste} title="comida" key={`dish:${dish.id}`} desc="Massa fresca com camarões e pesto. " price="79,97"/>
                     ))}
                 </SwiperComponent>
-                
-
-                <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,97"/>
-                
+                                
             </Content>
 
             <Footer />

@@ -5,7 +5,8 @@ import { TextButton } from "../TextButton";
 import {FiPlus, FiMinus} from 'react-icons/fi'
 
 
-export function ItemCounter() {
+export function ItemCounter({text, icon, ...rest}) {
+    icon ? icon : null;
     return(
         <Container>
             
@@ -14,7 +15,10 @@ export function ItemCounter() {
                 <span>01</span>
                 <TextButton icon={FiPlus}/>
             </div>
-            <Button text="Incluir"/>
+            
+            <Button icon={icon} text={text}/>
+            
+            
 
         </Container>
     )

@@ -5,8 +5,6 @@ import "keen-slider/keen-slider.min.css"
 
 import { Container } from "./styles";
 
-import {FiArrowRight, FiArrowLeft} from 'react-icons/fi'
-
 export function SwiperComponent ({title, children}) {
   
   const hasNoChilds = Children.count(children) === 0;
