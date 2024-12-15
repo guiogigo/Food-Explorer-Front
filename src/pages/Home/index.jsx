@@ -6,17 +6,42 @@ import frutasBanner from '../../assets/Frutas.png'
 import imgTeste from '../../assets/foodImages/name=gambe, size=200.png'
 import { SwiperComponent } from '../../components/Swiper';
 
-
-const dados = [
-    {id: "1", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,17"/>},
-    {id: "2", item: <Item img={imgTeste} title="Carne" desc="Massa fresca com camarões e pesto. " price="79,27"/>},
-    {id: "3", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,37"/>},
-    {id: "4", item: <Item img={imgTeste} title="Carne" desc="Massa fresca com camarões e pesto. " price="79,37"/>},
-    {id: "5", item: <Item img={imgTeste} title="Spaguetti Gambe" desc="Massa fresca com camarões e pesto. " price="79,57"/>},
-    {id: "6", item: <Item img={imgTeste} title="Carne" desc="Massa fresca com camarões e pesto. " price="79,67"/>},
-]
+import { useState, useEffect } from 'react';
+import { useCart } from '../../hooks/cart';
+import { api } from '../../services/api';
 
 export function Home() {
+    const [categories, setCategories] = useState([]);
+    const [dishes, setDishes] = useState([]);
+    const [search, setSearch] = useState();
+
+    const query = search === undefined ? '' : search;
+
+    async function fetchDishes() {
+        try {
+            const response = await api.get(`/dishes?search=${query}`);
+            setDishes(((response.data).dishes))
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        async function fecthCategories() {
+            try {
+                const response = await api.get('/categories');
+                setCategories((response.data))
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fecthCategories();
+        fetchDishes();
+    }, [])
+
+    
+
     return(
         <Container>
             <Header/>
@@ -34,21 +59,38 @@ export function Home() {
                 </Banner>
 
 
-                <SwiperComponent title="Teste">
-                    {dados.map((dish) => (
-                        <Item item={{
-                            id: 2,
-                            url: `/dish/${self.id}`,
-                            img: imgTeste,
-                            title: "comida",
-                            desc: "Massa fresca com camarões e pesto.",
-                            price:  '79,97',
-                        }} url={'/dish/1'} key={`dish:${dish.id}`}/>
-                    ))}
+                
 
-                    
+                {
+                    categories.map((cat) => {
+                        return(
+                            <SwiperComponent key={`category:${cat.id}`} title={cat.name}>
+                                {
+                                    dishes && 
+                                    dishes.filter((dish) => dish.categoryId === cat.id).map((d, i) => {
+                                        return(<Item 
+                                            key={`dish:${d.id}`}
+                                            item={d}
+                                            url={`/dishes/${d.id}`}
+                                        />)
+                                    })
+                                }
+                            </SwiperComponent>
+                        )
+                    })
 
-                </SwiperComponent>
+                    /*categories.map((cat) => 
+                            (<SwiperComponent key={`category:${cat.id}`} title={cat.name}>
+                                {
+                                    dishes && 
+                                    dishes.filter((dish) => dish.categoryId === cat.id).map((d,i) => (
+                                        console.log(d, i)
+                                    ))
+                                }
+                            </SwiperComponent>
+                        )
+                    )*/
+                }
                                 
             </Content>
 
@@ -62,5 +104,21 @@ export function Home() {
 /*
 <Item img={imgTeste} title="comida" key={`dish:${dish.id}`} desc="Massa fresca com camarões e pesto. " price="79,97"/>
     
-
+{dados.map((dish) => (
+                                    <Item item={{
+                                        id: 2,
+                                        url: `/dish/${self.id}`,
+                                        img: imgTeste,
+                                        title: "comida",
+                                        desc: "Massa fresca com camarões e pesto.",
+                                        price:  '79,97',
+                                    }} url={'/dish/1'} key={`dish:${dish.id}`}/>
+                                ))}
+.map((dish, id) => {
+                                        <Item 
+                                            key={`Dish: ${id}`}
+                                            item={dish}
+                                            url={`/dishes/${dish.id}`}
+                                        />
+                                    })
 */

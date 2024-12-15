@@ -8,9 +8,15 @@ import logoutIcon from '../../assets/logout-icon.svg';
 import receiptIcon from "../../assets/receipt-icon.svg"
 import { useRef } from "react";
 
+import { useAuth } from "../../hooks/auth.jsx";
+import { useCart } from "../../hooks/cart.jsx";
 
 export function Header() {
     const navRef = useRef()
+    const { signOut } = useAuth();
+
+    const { cartItems } = useCart();
+    const items = cartItems;
 
     function toggleNavbar(e) {
         console.log('toggleNavbar', e.target);
@@ -54,10 +60,10 @@ export function Header() {
                 <button id="btn-order" type="button">
                     <img src={receiptIcon} alt="" />
                     <span className="btn-order-txt">Pedidos</span>
-                    <span className="btn-order-qtd">0</span>
+                    <span className="btn-order-qtd">{items}</span>
                 </button>
 
-                <button id="exit" className="no-bg">
+                <button id="exit" className="no-bg" onClick={signOut}>
                     <img src={logoutIcon} alt="Sair da aplicação" />
                 </button>
                 

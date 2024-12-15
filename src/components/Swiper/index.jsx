@@ -5,14 +5,15 @@ import "keen-slider/keen-slider.min.css"
 
 import { Container } from "./styles";
 
-export function SwiperComponent ({title, children}) {
+export function SwiperComponent ({title, children, ...rest}) {
+
   
-  const hasNoChilds = Children.count(children) === 0;
-
-  if (hasNoChilds) return null;
-
+  
   const [ currentSlide, setCurrentSlide ] = useState(0);
   const [ loaded, setLoaded ] = useState(false);
+
+
+  
 
   const sliderConfig = {
     initial: 0,
@@ -63,8 +64,11 @@ export function SwiperComponent ({title, children}) {
   };
   const [ sliderRef, instanceRef ] = useKeenSlider(sliderConfig);
 
+  const hasNoChilds = Children.count(children) === 0;
+  if (hasNoChilds) return null;
+
   return (
-    <Container className="slider-wrapper">
+    <Container className="slider-wrapper" {...rest}>
       {title && <h2 className="title">{title}</h2>}
       <div ref={sliderRef} className="keen-slider">
         {Children.map(children, (child, id) => (

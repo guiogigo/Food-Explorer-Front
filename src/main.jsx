@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyles from './styles/global.js'
 
+import { AuthProvider } from './hooks/auth.jsx'
+import { CartProvider } from './hooks/cart.jsx'
+
 import { register } from 'swiper/element'
 register();
 
@@ -13,7 +16,11 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-        <Routes/>
+        <AuthProvider>
+          <CartProvider>
+            <Routes/>
+          </CartProvider>
+        </AuthProvider>
     </ThemeProvider>
   </StrictMode>,
 )

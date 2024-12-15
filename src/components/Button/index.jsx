@@ -1,9 +1,9 @@
 import { Container } from "./styles";
 
 
-export function Button({ icon: Icon, text }) {
+export function Button({ icon: Icon, text, ...rest }) {
     return (
-        <Container type="button">
+        <Container type="button" {...rest}>
             {
                 Icon &&
                 <img src={Icon} alt="" />

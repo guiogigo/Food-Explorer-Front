@@ -1,12 +1,24 @@
 import { Container, Profile, Form } from "./styles";
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button'
-import { Link ,Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
+
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth.jsx";
 
 import rocketIcon from "../../assets/rocket-icon.svg"
-import { TextButton } from "../../components/TextButton";
 
 export function SignIn() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const { signIn } = useAuth();
+
+    function handleSignIn() {
+        signIn({email, password})
+    }
+
     return(
         <Container>
             <Profile>
@@ -22,17 +34,19 @@ export function SignIn() {
                         placeholder="Exemplo: exemplo@exemplo.com.br"
                         type="text"
                         border="true"
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
                     <span>Senha</span>
                     <Input 
                         placeholder="No mínimo 6 caracteres"
-                        type="text"
+                        type="password"
                         border="true"
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                    <Button text="Entrar"/>
+                    <Button text="Entrar" onClick={handleSignIn}/>
                     <Link to="/signup">
                         Criar uma conta
                     </Link>

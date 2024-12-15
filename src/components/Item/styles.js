@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { TextButton } from "../TextButton";
 
-export const Heart = styled(TextButton)``;
+export const IconButton = styled(TextButton)``;
 
 export const Container = styled.div`
     padding: 2.4rem;
@@ -26,14 +26,34 @@ export const Container = styled.div`
         transform: translateY(3px);
         filter: brightness(1.1);
     }
-
-    > ${Heart} {
+    
+    
+    > ${IconButton} {
         position: absolute;
         top: 1.6rem;
         right: 1.6rem;
 
         width: 2.4rem;
         height: 2.4rem;
+
+        transition: transform 300ms;
+        
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    .edit {
+        
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+        z-index: 99;
+
+        transition: transform 300ms;
+
+        &:hover {
+        transform: scale(1.1);
+        }
     }
     
     a {
@@ -55,11 +75,12 @@ export const Container = styled.div`
             font-size: 2.4rem;
             font-weight: 700;
             line-height: 140%; /* 33.6px */
+            max-width: 25.6rem;
+
             text-overflow: ellipsis;
             white-space: nowrap;
-
             display: flex;
-            align-items: center;        
+            align-items: center;     
             > svg {
                 width: 2.4rem;
                 height: 2.4rem;
