@@ -26,6 +26,11 @@ export const Container = styled.header`
         }
     }
 
+    a {
+        text-decoration: none;
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
+    }
+
     button.no-bg {
         border: 0;
         border-radius: 2px;
@@ -47,8 +52,6 @@ export const Container = styled.header`
             user-select: none; /* Standard */
         }
     }
-
-    
 
     nav {
         z-index: 999;
@@ -103,18 +106,31 @@ export const Container = styled.header`
     }
 
     .mobile-button {
-        display: block;
         width: 100%;
         text-align: left;
         border: none;
-        border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+
         height: 5.4rem;
         
+        display: flex;
+        flex-direction: column;
+
+        span {
+            padding: 1rem;
+            color: ${({ theme }) => theme.COLORS.LIGHT_100};
+            min-width: 100%;
+            border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+        
+            font-family: 'Roboto';
+            font-weight: 300;
+            font-size: 2.1rem;
+            line-height: 140%; /* 33.6px */
+            gap: 1.6rem;
+        }
+        
         background: none;
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
-        font-family: 'Roboto';
-        font-size: 2.1rem;
-        gap: 1.6rem;
+
+        
     }
 
     #exit {
@@ -188,6 +204,7 @@ export const Container = styled.header`
         align-items: center;
         gap: .8rem;
 
+
         .btn-order-txt {
             display: none;
         }
@@ -219,11 +236,17 @@ export const Container = styled.header`
             padding: 12px 46px;
             background-color:  ${({ theme }) => theme.COLORS.TOMATO_100};
 
+            .new-dish {
+                padding: none;
+            }
+
+            .btn-new-dish,
             .btn-order-qtd,
             .btn-order-txt {
                 display: inline;
                 color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
+                white-space: nowrap;
                 font-family: 'Poppins';
                 font-style: normal;
                 font-weight: 500;
@@ -268,17 +291,7 @@ export const Profile = styled(Link)`
         color: ${({theme}) => theme.COLORS.LIGHT_100};
     }
 
-    span {
-        color: ${({theme}) => theme.COLORS.CAKE_200};
-
-        font-family: Roboto;
-        font-size: 1.2rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 160%; /* 19.2px */
-
-        display: none;
-    }
+    
 
     > img {
         width: 2.4rem;
@@ -292,6 +305,24 @@ export const Profile = styled(Link)`
         white-space: nowrap;
     }
 
+    .profile-txt {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        gap: .8rem;
+
+        span {
+            color: ${({theme}) => theme.COLORS.CAKE_200};
+            text-align: center;
+
+            font-family: Roboto;
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: 400;
+        }
+    }
+
     ${DEVICE_BREAKPOINTS.LG} {
         gap: 10px;
         h1 {
@@ -300,6 +331,14 @@ export const Profile = styled(Link)`
         > img {
             width: 3rem;
             height: 3rem;
+        }
+
+        .profile-txt {
+        flex-direction: column;
+        justify-content: end;
+        align-items: end;
+        
+        gap: 0;
         }
     }
 `;

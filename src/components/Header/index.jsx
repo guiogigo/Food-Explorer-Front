@@ -11,9 +11,12 @@ import { useRef } from "react";
 import { useAuth } from "../../hooks/auth.jsx";
 import { useCart } from "../../hooks/cart.jsx";
 
+import { Link } from "react-router-dom";
+import { Button } from "../Button/index.jsx";
+
 export function Header() {
     const navRef = useRef()
-    const { signOut } = useAuth();
+    const { signOut, user } = useAuth();
 
     const { cartItems } = useCart();
     const items = cartItems;
@@ -31,9 +34,13 @@ export function Header() {
 
             <Profile to="/">
                 <img src={rocketIcon} alt="" />
-                <div>
+                <div className="profile-txt">
                     <h1>food explorer</h1>
-                    <span>admin</span>
+                    {
+                        user?.role == "admin" ? 
+                            <span>admin</span>
+                        : null
+                    }
                 </div>
             </Profile>
 
@@ -47,21 +54,37 @@ export function Header() {
                     </div>
                     <div className="menu-content">
                         <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
-                        
+                        <button className="mobile-button" >
+                            {
+                                user?.role == 'admin' ?
+                                /*<Link className="teste">
+                                
+                                <span>Novo Prato</span>
+                                </Link>*/
+                                <span>
+                                    <Link>Novo Prato</Link>
+                                </span>
 
-                        <button className="mobile-button">
-                            <span>Sair</span>
+                                
+                                : null
+                            }
+                            <span onClick={signOut} >Sair</span>
                         </button>
                     </div>
-
-                    
                 </nav>
 
-                <button id="btn-order" type="button">
-                    <img src={receiptIcon} alt="" />
-                    <span className="btn-order-txt">Pedidos</span>
-                    <span className="btn-order-qtd">{items}</span>
-                </button>
+                    {
+                        user?.role == "admin" ? 
+                        <button id="btn-order" type="button">
+                            <span className="btn-order-txt">Novo Prato</span>
+                        </button>
+                        :
+                        <button id="btn-order" type="button">
+                            <img src={receiptIcon} alt="" />
+                            <span className="btn-order-txt">Pedidos</span>
+                            <span className="btn-order-qtd">{items}</span>
+                        </button>
+                    }      
 
                 <button id="exit" className="no-bg" onClick={signOut}>
                     <img src={logoutIcon} alt="Sair da aplicação" />
