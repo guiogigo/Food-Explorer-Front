@@ -6,7 +6,6 @@ import { ItemCounter } from '../../components/ItemCounter'
 import { Tag } from "../../components/Tag";
 import CaretLeft from '../../assets/CaretLeft.svg';
 
-import dishImage from '../../assets/foodImages/name=molla, size=400.png'
 import { Link, useParams } from "react-router-dom";
 
 import { api } from "../../services/api";

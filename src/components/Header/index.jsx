@@ -10,9 +10,9 @@ import { useRef } from "react";
 
 import { useAuth } from "../../hooks/auth.jsx";
 import { useCart } from "../../hooks/cart.jsx";
+import { useSearch } from "../../hooks/search.jsx";
 
 import { Link } from "react-router-dom";
-import { Button } from "../Button/index.jsx";
 
 export function Header() {
     const navRef = useRef()
@@ -20,6 +20,8 @@ export function Header() {
 
     const { cartItems } = useCart();
     const items = cartItems;
+
+    const { searchValue, setSearch } = useSearch();
 
     function toggleNavbar(e) {
         console.log('toggleNavbar', e.target);
@@ -53,7 +55,13 @@ export function Header() {
                         </button>
                     </div>
                     <div className="menu-content">
-                        <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
+                        <Input 
+                            icon={FiSearch} 
+                            placeholder="Busque por pratos ou ingredientes"
+                            type='search'
+                            value={searchValue}
+                            onChange={(e) => setSearch(e.target.value)}
+                            />
                         <button className="mobile-button" >
                             {
                                 user?.role == 'admin' ?

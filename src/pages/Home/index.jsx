@@ -3,19 +3,18 @@ import { Footer } from '../../components/Footer';
 import { Item } from '../../components/Item';
 import { Container, Banner, Content } from './styles';
 import frutasBanner from '../../assets/Frutas.png'
-import imgTeste from '../../assets/foodImages/name=gambe, size=200.png'
 import { SwiperComponent } from '../../components/Swiper';
 
 import { useState, useEffect } from 'react';
-import { useCart } from '../../hooks/cart';
+import { useSearch } from '../../hooks/search';
 import { api } from '../../services/api';
 
 export function Home() {
     const [categories, setCategories] = useState([]);
     const [dishes, setDishes] = useState([]);
-    const [search, setSearch] = useState();
+    const {searchValue, setSearch} = useSearch();
 
-    const query = search === undefined ? '' : search;
+    const query = searchValue === undefined ? '' : searchValue;
 
     async function fetchDishes() {
         try {
@@ -26,19 +25,23 @@ export function Home() {
         }
     }
 
-    useEffect(() => {
-        async function fecthCategories() {
-            try {
-                const response = await api.get('/categories');
-                setCategories((response.data))
-            } catch (error) {
-                console.error(error);
-            }
+    async function fetchCategories() {
+        try {
+            const response = await api.get('/categories');
+            setCategories((response.data))
+        } catch (error) {
+            console.error(error);
         }
+    }
+    useEffect(() => {
 
-        fecthCategories();
+        fetchCategories();
         fetchDishes();
     }, [])
+
+    useEffect(() => {
+        fetchDishes();
+    }, [ searchValue ])
 
     
 
@@ -47,17 +50,19 @@ export function Home() {
             <Header/>
 
             <Content>
+                {
+                    query ? null : 
                 
-                <Banner>
-                    <div className='banner-wrapper'>
-                        <div className='banner-content'>
-                            <div className='banner-img'><img src={frutasBanner} alt="" /></div>
-                            <h2>Sabores inigualáveis</h2>
-                            <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                    <Banner>
+                        <div className='banner-wrapper'>
+                            <div className='banner-content'>
+                                <div className='banner-img'><img src={frutasBanner} alt="" /></div>
+                                <h2>Sabores inigualáveis</h2>
+                                <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+                            </div>
                         </div>
-                    </div>
-                </Banner>
-
+                    </Banner>
+                }
 
                 
 
@@ -78,18 +83,6 @@ export function Home() {
                             </SwiperComponent>
                         )
                     })
-
-                    /*categories.map((cat) => 
-                            (<SwiperComponent key={`category:${cat.id}`} title={cat.name}>
-                                {
-                                    dishes && 
-                                    dishes.filter((dish) => dish.categoryId === cat.id).map((d,i) => (
-                                        console.log(d, i)
-                                    ))
-                                }
-                            </SwiperComponent>
-                        )
-                    )*/
                 }
                                 
             </Content>

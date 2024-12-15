@@ -5,6 +5,7 @@ export const AuthContext = createContext({})
 
 function AuthProvider({ children }) {
     const [data, setData] = useState({});
+    const [loading, setLoading] = useState(true);
 
     async function signIn({email, password}) {
         
@@ -17,6 +18,8 @@ function AuthProvider({ children }) {
 
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             setData({user, token})
+
+            setLoading(false)
 
         } catch (error) {
             if(error.response) {
@@ -32,6 +35,7 @@ function AuthProvider({ children }) {
         localStorage.removeItem("@foodexplorer:user");
 
         setData({});
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -44,6 +48,8 @@ function AuthProvider({ children }) {
                 user: JSON.parse(user),
                 token
             })
+
+            setLoading(false)
         }
     }, [])
 
@@ -52,6 +58,7 @@ function AuthProvider({ children }) {
             signIn, 
             signOut,
             user: data.user,
+            loading
         }}>
             {children}
         </AuthContext.Provider>

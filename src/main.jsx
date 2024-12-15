@@ -5,6 +5,7 @@ import GlobalStyles from './styles/global.js'
 
 import { AuthProvider } from './hooks/auth.jsx'
 import { CartProvider } from './hooks/cart.jsx'
+import { SearchProvider } from './hooks/search.jsx'
 
 import { register } from 'swiper/element'
 register();
@@ -16,11 +17,13 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-        <AuthProvider>
+      <AuthProvider>
+        <SearchProvider>
           <CartProvider>
             <Routes/>
           </CartProvider>
-        </AuthProvider>
+        </SearchProvider>
+      </AuthProvider>
     </ThemeProvider>
   </StrictMode>,
 )

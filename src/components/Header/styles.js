@@ -6,8 +6,8 @@ export const Container = styled.header`
     grid-area: header;
 
     min-height: 11.4rem;
-    width: 100%;
-    padding-inline: 2.8rem;
+    padding-inline: 2.4rem;
+    padding-top: 2.5rem;
 
     background-color: ${({theme}) => theme.COLORS.DARK_600};
 

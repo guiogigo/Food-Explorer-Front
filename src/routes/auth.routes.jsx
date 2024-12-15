@@ -14,3 +14,7 @@ export function AuthRoutes() {
         </Routes>
     )
 }
+
+/*
+            <Route path="*" element={<Navigate to="/signin" replace />} />
+*/
