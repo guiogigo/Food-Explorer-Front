@@ -15,11 +15,14 @@ export function AppRoutes() {
             <Route path="/home" element={<Home/>}/>
 
             <Route path="/dishes/:id" element={<Dish/>}/>
-            <Route path="/teste" element={<NewDish/>}/>
+            
             
             {
                 user?.role == 'admin' ? (
-                    <Route path="/edit/:id" element={<Dish/>}/>
+                    <>
+                        <Route path="/newDish" element={<NewDish/>}/>
+                        <Route path="/edit/:id" element={<Dish/>}/>
+                    </>
                 ) : null
             }
             <Route path="*" element={<Navigate to="/" replace />} />

@@ -11,7 +11,11 @@ import { Link, useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { useEffect, useState } from "react";
 
+import { useAuth } from "../../hooks/auth";
+
 export function Dish() {
+
+    const { user } = useAuth();
 
     const [dish, setDish] = useState(null)
     const params = useParams();
@@ -57,7 +61,10 @@ export function Dish() {
                             }
                         </div>
 
-                        <ItemCounter item={dish} text="pedir ∙ R$ 25,00"/>
+                        {
+                            user?.role === "admin" ? null :
+                            <ItemCounter item={dish} text={`pedir ∙ R$ ${dish.price.toFixed(2).replace('.', ',')}`}/>
+                        }
                     </div>
                 </div>
 

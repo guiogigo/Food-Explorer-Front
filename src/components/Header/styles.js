@@ -141,6 +141,7 @@ export const Container = styled.header`
         padding-inline: clamp(10px, 9vw, 12.3rem);
         padding-top: 0;
         gap: 3.2rem;
+        min-height: 9.6rem;
 
         button.menu {
             display: none;

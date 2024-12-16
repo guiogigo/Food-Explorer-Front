@@ -70,7 +70,7 @@ export function Header() {
                                 <span>Novo Prato</span>
                                 </Link>*/
                                 <span>
-                                    <Link>Novo Prato</Link>
+                                    <Link to="/newDish">Novo Prato</Link>
                                 </span>
 
                                 
@@ -83,9 +83,9 @@ export function Header() {
 
                     {
                         user?.role == "admin" ? 
-                        <button id="btn-order" type="button">
+                        <Link to={"/newDish"} id="btn-order">
                             <span className="btn-order-txt">Novo Prato</span>
-                        </button>
+                        </Link>
                         :
                         <button id="btn-order" type="button">
                             <img src={receiptIcon} alt="" />

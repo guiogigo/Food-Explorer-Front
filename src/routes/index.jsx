@@ -6,10 +6,10 @@ import { AuthRoutes } from "./auth.routes";
 import { useAuth } from "../hooks/auth";
 
 export function Routes() {
-    const { user, loading } = useAuth();
+    const { user, loading, setLoading } = useAuth();
 
     if(loading) {
-        console.log("Carregando...")
+        if(!user) {setLoading(false)};
         return(
             <div>Carregando...</div>
         )

@@ -58,7 +58,8 @@ function AuthProvider({ children }) {
             signIn, 
             signOut,
             user: data.user,
-            loading
+            loading,
+            setLoading
         }}>
             {children}
         </AuthContext.Provider>

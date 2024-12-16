@@ -10,6 +10,7 @@ import { useCart } from "../../hooks/cart";
 export function ItemCounter({text, icon, item, ...rest}) {
     icon ? icon : null;
 
+
     const [qtd, setQtd] = useState(0)
     const { addDish } = useCart();
 
