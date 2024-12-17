@@ -196,6 +196,27 @@ export const Container = styled.header`
         
     }
 
+    #btn-favs {
+        position: relative;
+        border: none;
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .8rem;
+
+        > span > a {
+            color: ${({theme}) => theme.COLORS.LIGHT_300};
+            white-space: nowrap;
+            text-align: center;
+            font-family: Roboto;
+            font-size: 1.6rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 16px */
+        }
+    }
+
     #btn-order {
         position: relative;
         border: none;

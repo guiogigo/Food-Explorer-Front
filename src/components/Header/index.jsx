@@ -74,7 +74,10 @@ export function Header() {
                                 </span>
 
                                 
-                                : null
+                                : 
+                                <span>
+                                    <Link to="/favorites">Favoritos</Link>
+                                </span>
                             }
                             <span onClick={signOut} >Sair</span>
                         </button>
@@ -87,11 +90,17 @@ export function Header() {
                             <span className="btn-order-txt">Novo Prato</span>
                         </Link>
                         :
-                        <button id="btn-order" type="button">
-                            <img src={receiptIcon} alt="" />
-                            <span className="btn-order-txt">Pedidos</span>
-                            <span className="btn-order-qtd">{items}</span>
-                        </button>
+                        <>
+                            <button id="btn-favs" type="button">
+                                <span><Link to="/favorites">Meus favoritos</Link></span>
+                            </button>
+
+                            <button id="btn-order" type="button">
+                                <img src={receiptIcon} alt="" />
+                                <span className="btn-order-txt">Pedidos</span>
+                                <span className="btn-order-qtd">{items}</span>
+                            </button>
+                        </>
                     }      
 
                 <button id="exit" className="no-bg" onClick={signOut}>

@@ -6,6 +6,7 @@ import { NewDish } from "../pages/NewDish";
 
 import { useAuth } from "../hooks/auth";
 import { EditDish } from "../pages/EditDish";
+import { Favorites } from "../pages/Favorites";
 
 export function AppRoutes() {
     const { user } = useAuth();
@@ -16,7 +17,7 @@ export function AppRoutes() {
             <Route path="/home" element={<Home/>}/>
 
             <Route path="/dishes/:id" element={<Dish/>}/>
-            
+            <Route path="/favorites" element={<Favorites/>}/>
             
             {
                 user?.role == 'admin' ? (
