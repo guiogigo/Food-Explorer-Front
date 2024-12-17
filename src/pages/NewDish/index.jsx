@@ -84,7 +84,6 @@ export function NewDish(){
 
         try {
             const {data} = await api.post("/dishes", newDish)
-            
 
             if(imgFile && data.id) {
                 const fileUploadForm = new FormData();
@@ -100,6 +99,8 @@ export function NewDish(){
         }
 
     }
+
+
 
     useEffect(() => {
         fetchCategories();

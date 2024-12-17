@@ -32,7 +32,7 @@ export function SignIn() {
                     <span>Email</span>
                     <Input 
                         placeholder="Exemplo: exemplo@exemplo.com.br"
-                        type="text"
+                        type="email"
                         border="true"
                         onChange={(e) => setEmail(e.target.value)}
                     />
