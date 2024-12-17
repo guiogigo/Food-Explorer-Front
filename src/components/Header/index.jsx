@@ -91,8 +91,8 @@ export function Header() {
                         </Link>
                         :
                         <>
-                            <button id="btn-favs" type="button">
-                                <span><Link to="/favorites">Meus favoritos</Link></span>
+                            <button id="btn-favs"  type="button">
+                                <span className="desktop-only"><Link to="/favorites">Meus favoritos</Link></span>
                             </button>
 
                             <button id="btn-order" type="button">

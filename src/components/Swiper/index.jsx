@@ -1,5 +1,5 @@
 
-import React, {Children, useState} from "react"
+import React, {Children, useEffect, useState} from "react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
@@ -11,9 +11,6 @@ export function SwiperComponent ({title, children, ...rest}) {
   
   const [ currentSlide, setCurrentSlide ] = useState(0);
   const [ loaded, setLoaded ] = useState(false);
-
-
-  
 
   const sliderConfig = {
     initial: 0,
@@ -27,7 +24,7 @@ export function SwiperComponent ({title, children, ...rest}) {
     loop: false,
     slides: {
       origin: "center",
-      spacing: 15,
+      spacing: "auto",
     },
     breakpoints: {
       '(min-width: 1px)': {
@@ -61,6 +58,7 @@ export function SwiperComponent ({title, children, ...rest}) {
         slides: { perView: 3.4, },
       },
     }
+    
   };
   const [ sliderRef, instanceRef ] = useKeenSlider(sliderConfig);
 

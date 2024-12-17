@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { TextButton } from "../TextButton";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const IconButton = styled(TextButton)``;
 
 export const Container = styled.div`
-    padding: 2.4rem;
-
-    width: 30.4rem;
+    
     height: 46rem;
-
+    width: 20rem;
+    padding: 1.2rem;
     position: relative;
 
     display: flex;
@@ -27,11 +27,10 @@ export const Container = styled.div`
         filter: brightness(1.1);
     }
     
-    
     > ${IconButton} {
         position: absolute;
-        top: 1.6rem;
-        right: 1.6rem;
+        top: .3rem;
+        right: .3rem;
 
         width: 2.4rem;
         height: 2.4rem;
@@ -42,6 +41,7 @@ export const Container = styled.div`
             transform: scale(1.1);
         }
     }
+    
     .edit {
         
         position: absolute;
@@ -57,6 +57,7 @@ export const Container = styled.div`
     }
     
     a {
+        width: 100%;
         text-decoration: none;
         display: flex;
         flex-direction: column;
@@ -69,18 +70,20 @@ export const Container = styled.div`
         }
     
         > h3 {
+            width: 100%;
             color: ${({theme}) => theme.COLORS.LIGHT_300};
             text-align: center;
             font-family: Poppins;
-            font-size: 2.4rem;
+            
+            font-size: 1.6rem;
             font-weight: 700;
             line-height: 140%; /* 33.6px */
             max-width: 25.6rem;
 
             text-overflow: ellipsis;
-            white-space: nowrap;
             display: flex;
             align-items: center;     
+            justify-content: center;
             > svg {
                 width: 2.4rem;
                 height: 2.4rem;
@@ -101,10 +104,40 @@ export const Container = styled.div`
         color: ${({theme}) => theme.COLORS.CAKE_200};
 
         font-family: Roboto;
-        font-size: 3.2rem;
+        
+        font-size: 2.4rem;
         font-style: normal;
         font-weight: 400;
         line-height: 160%; 
+    }
+
+    ${DEVICE_BREAKPOINTS.LG} {
+        padding: 2.4rem;
+
+        width: 30.4rem;
+
+        > ${IconButton} {
+            position: absolute;
+            top: 1.6rem;
+            right: 1.6rem;
+
+            width: 2.4rem;
+            height: 2.4rem;
+
+            transition: transform 300ms;
+            
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        a > h3 {
+            font-size: 2.4rem;
+        }
+
+        > span {
+            font-size: 3.2rem;
+        }
     }
 `;
 

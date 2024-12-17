@@ -8,6 +8,15 @@ export const Container = styled.div`
     width: min(95vw, 112.2rem);
     margin: 0 auto 4.8rem;
 
+    .keen-slider {
+        display: flex;
+    }
+
+    .keen-slider__slide {
+        position: relative;
+        min-width: 30.4rem;
+    }
+
     h2.title {
         margin-bottom: 2.3rem;
         font-family: 'Poppins';
