@@ -7,11 +7,11 @@ import { RiArrowDropRightLine } from 'react-icons/ri'
 
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
-import { useCart } from "../../hooks/cart";
 import { useState, useEffect } from "react";
+import PlaceHolderImg from '../../assets/foodImages/empty.jpg';
 
 export function Item({item, url='#', ...rest}) {
-    const img = item.avatar ? `${api.defaults.baseURL}/files/${item.avatar}` : ""
+    const img = item.avatar ? `${api.defaults.baseURL}/files/${item.avatar}` : PlaceHolderImg;
     const [favorite, setFavorite] = useState(item.isFav)
 
     const { user } = useAuth();
@@ -37,7 +37,7 @@ export function Item({item, url='#', ...rest}) {
             
             {
                 user.role === 'admin' ? 
-                <Link className="edit">
+                <Link to={`/edit/${item.id}`} className="edit">
                     <IconButton icon={FaPen}/>
                 </Link>
                 :

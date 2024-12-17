@@ -76,7 +76,7 @@ export function NewDish(){
         const newDish = {
             name,
             description,
-            price: Number(price.replace(',', '.')),
+            price: Number(price.replace(',', '.')).toFixed(2),
             category_id: dishCategory,
             ingredients,
             avatar: imgFile
@@ -87,7 +87,6 @@ export function NewDish(){
             
 
             if(imgFile && data.id) {
-                console.log("chweguei aqui")
                 const fileUploadForm = new FormData();
                 fileUploadForm.append('avatar', imgFile);
 

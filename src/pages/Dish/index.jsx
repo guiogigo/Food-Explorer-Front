@@ -5,8 +5,9 @@ import { Footer } from "../../components/Footer";
 import { ItemCounter } from '../../components/ItemCounter'
 import { Tag } from "../../components/Tag";
 import CaretLeft from '../../assets/CaretLeft.svg';
+import PlaceHolderImg from '../../assets/foodImages/empty.jpg';
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import { api } from "../../services/api";
 import { useEffect, useState } from "react";
@@ -20,13 +21,19 @@ export function Dish() {
     const [dish, setDish] = useState(null)
     const params = useParams();
     
-    const img = dish?.avatar ? `${api.defaults.baseURL}/files/${dish.avatar}` : ""
+    const img = dish?.avatar ? `${api.defaults.baseURL}/files/${dish.avatar}` : PlaceHolderImg
     
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchDish() {
-            const response = await api.get(`/dishes/${params.id}`)
-            setDish(response.data)
+            try {
+                const response = await api.get(`/dishes/${params.id}`)
+                setDish(response.data)
+            } catch (error) {
+                alert(error.response?.data.message)
+                navigate("/")
+            }
         }
         fetchDish()
     }, [])
